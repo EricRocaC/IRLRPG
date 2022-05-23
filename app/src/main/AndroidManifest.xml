@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IRLRPG">
         <activity
-            android:name=".RegistrationActivity"
+            android:name="RegistrationActivity"
             android:exported="false" />
-        <activity android:name=".LoginActivity"
+        <activity android:name="LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -1,4 +1,4 @@
-package com.example.irlrpg.data.model;
+package com.example.irlrpg;
 
 public class Nivell {
     public int currentXP = 0;
