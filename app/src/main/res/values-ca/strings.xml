@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IRLRPG</string>
+    <string name="prompt_username">Usuari</string>
+    <string name="prompt_password">Contrasenya</string>
+    <string name="action_sign_in">Iniciar sessió o registrar-se</string>
+    <string name="action_sign_in_short">Iniciar sessió</string>
+    <string name="welcome">Benvingut !</string>
+    <string name="invalid_username">No es un usuari vàlid</string>
+    <string name="invalid_password">La contrasenya ha de ser de >5 caràcters</string>
+    <string name="login_failed">El Login ha fallat</string>
+    <string name="remember_password">Recuperar contrasenya</string>
+    <string name="register">Registre</string>
+    <string name="repeat_password">Repetir contrasenya</string>
+    <string name="mental_illness">Enfermetat mental o desordre</string>
+    <string name="prompt_email">Correu electrònic</string>
+    <string name="goToQuests">Anar a missions</string>
+    <string name="goToTraining">Anar a entrenament</string>
+    <string name="importance_level">Nivell d\'importancia</string>
+    <string name="difficulty_level">Nivell de dificultad</string>
+    <string name="description">Descripció</string>
+    <string name="autism">Autisme</string>
+    <string name="adhd">Transtorn de Dèficit d\'Atenció i Hiperactivitat</string>
+    <string name="levels_difficulty">Nivells</string>
+</resources>
