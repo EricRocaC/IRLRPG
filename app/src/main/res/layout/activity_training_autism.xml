@@ -7,36 +7,36 @@
     android:background="@drawable/bg">
 
     <TableLayout
-        android:id="@+id/questTable"
+        android:id="@+id/trainingTable"
         android:layout_width="302dp"
         android:layout_height="578dp"
-        tools:ignore="MissingConstraints"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="54dp"
         tools:layout_editor_absoluteY="27dp">
 
         <TableRow
-            android:id="@+id/expQuest"
+            android:id="@+id/expTraining"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <TableRow
-            android:id="@+id/descQuest"
+            android:id="@+id/descTraining"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <TableRow
-            android:id="@+id/deleteQuest"
+            android:id="@+id/deleteTraining"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </TableLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addQuest"
+        android:id="@+id/addTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
@@ -50,4 +50,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

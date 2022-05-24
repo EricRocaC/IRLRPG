@@ -11,27 +11,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IRLRPG">
+
         <activity
-            android:name="RegistrationActivity"
-            android:exported="false" />
-        <activity android:name="LoginActivity"
-            android:exported="true">
+            android:name=".ConfigQuest"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ConfigTraining"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".QuestAutism"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TrainingAutism"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EditCourseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCourseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
     </application>
 
 </manifest>

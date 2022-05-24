@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText userNameEdit, pwdEdt;
-    private Button loginBtn;
+    private Button loginBtn, registerTV;
     private ProgressBar loadingPB;
-    private TextView registerTV;
     private FirebaseAuth mAuth;
 
     @Override
@@ -40,8 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         registerTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
-                startActivity(i);
+                Toast.makeText(LoginActivity.this, "Login Successful...", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -22,6 +22,7 @@
         android:layout_width="85dp"
         android:layout_height="48dp"
         android:layout_marginStart="286dp"
+        android:layout_marginTop="430dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="253dp"
         android:contentDescription="@string/difficulty_level"
@@ -29,5 +30,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

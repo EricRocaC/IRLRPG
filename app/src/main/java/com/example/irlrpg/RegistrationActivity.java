@@ -22,9 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText userNameEdit, pwdEdt, cnfPwdEdt;
-    private Button registerBtn;
+    private Button registerBtn, loginTV;
     private ProgressBar loadingPB;
-    private TextView loginTV;
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,10 +33,11 @@ public class RegistrationActivity extends AppCompatActivity {
         userNameEdit = findViewById(R.id.userRegister);
         pwdEdt = findViewById(R.id.passwordRegister);
         cnfPwdEdt = findViewById(R.id.repeatPassword);
-        registerBtn = findViewById(R.id.buttonReg);
+        registerBtn = findViewById(R.id.register);
         loadingPB = findViewById(R.id.idPBLoading);
         loginTV = findViewById(R.id.buttonLog);
         mAuth = FirebaseAuth.getInstance();
+
         loginTV.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
