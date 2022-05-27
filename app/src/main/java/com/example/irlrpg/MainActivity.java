@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnQuest, btnTraining;
+    int expUser, expNextLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

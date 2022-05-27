@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="mentalIllness">
-        <item name="autism">Autism</item>
-        <item name="adhd">Attention deficit hyperactivity disorder</item>
+        <item name="autism">@string/autism</item>
+        <item name="adhd">@string/adhd</item>
     </string-array>
 </resources>

@@ -22,4 +22,7 @@
     <string name="autism">Autism</string>
     <string name="adhd">Attention Deficit Hyperactivity Disorder</string>
     <string name="levels_difficulty">Levels</string>
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

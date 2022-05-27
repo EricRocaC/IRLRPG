@@ -22,4 +22,7 @@
     <string name="autism">Autisme</string>
     <string name="adhd">Transtorn de Dèficit d\'Atenció i Hiperactivitat</string>
     <string name="levels_difficulty">Nivells</string>
+    <string name="add">Afegir</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar</string>
 </resources>

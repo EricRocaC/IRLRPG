@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.234" />
 
     <Spinner
-        android:id="@+id/levelsArrayTrain"
+        android:id="@+id/levelsArrayTrainEdit"
         android:layout_width="85dp"
         android:layout_height="48dp"
         android:layout_marginStart="286dp"
@@ -32,31 +32,47 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/descTrain"
+        android:id="@+id/descTrainEdit"
         android:layout_width="300dp"
         android:layout_height="220dp"
         android:hint="@string/description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/levelsArrayTrain" />
+        app:layout_constraintTop_toBottomOf="@+id/levelsArrayTrainEdit" />
 
     <Button
-        android:id="@+id/addTrain"
+        android:id="@+id/deleteQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
+        android:layout_marginStart="79dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="159dp"
+        android:layout_marginEnd="244dp"
         android:layout_marginBottom="652dp"
-        android:text="@string/add"
+        android:text="@string/edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/deleteTraining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="812dp"
+        android:text="@string/delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/dificultat"
+        android:id="@+id/dificultatEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="113dp"
@@ -68,4 +84,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

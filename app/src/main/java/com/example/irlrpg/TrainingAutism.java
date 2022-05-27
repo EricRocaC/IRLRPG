@@ -23,7 +23,7 @@ public class TrainingAutism extends AppCompatActivity {
         btnAddTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TrainingAutism.this, "Training Configuration", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TrainingAutism.this, "Going to training Configuration", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(TrainingAutism.this, ConfigTraining.class));
             }
         });
