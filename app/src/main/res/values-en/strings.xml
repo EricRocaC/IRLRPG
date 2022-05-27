@@ -25,4 +25,10 @@
     <string name="add">Add</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="adviseMessageUser">Use your email</string>
+    <string name="change">Change</string>
+    <string name="ret">Return</string>
+    <string name="logout">Log Out</string>
+    <string name="strength">Strength</string>
+    <string name="inteligence">Inteligence</string>
 </resources>

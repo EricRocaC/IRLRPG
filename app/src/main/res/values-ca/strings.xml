@@ -25,4 +25,10 @@
     <string name="add">Afegir</string>
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
+    <string name="adviseMessageUser">Introdueix el teu correu</string>
+    <string name="change">Cambiar</string>
+    <string name="ret">Enrere</string>
+    <string name="logout">Desconectat</string>
+    <string name="strength">Força</string>
+    <string name="inteligence">Intel·ligencia</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.irlrpg;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,34 +47,40 @@ public class ConfigQuest extends AppCompatActivity {
                 String descQuest = descQuestEdt.getText().toString();
                 String importance = spin.getSelectedItem().toString();
 
-                if(importance.equals("1")){
-                    expQuest = "100";
-                }else if(importance.equals("2")){
-                    expQuest = "200";
-                } else if(importance.equals("3")){
-                    expQuest = "300";
-                } else if(importance.equals("4")){
-                    expQuest = "400";
-                } else if(importance.equals("5")){
-                    expQuest = "500";
+                if (TextUtils.isEmpty(descQuest)){
+                    Toast.makeText(ConfigQuest.this, "Please enter quest data", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    if(importance.equals("1")){
+                        expQuest = "100";
+                    }else if(importance.equals("2")){
+                        expQuest = "200";
+                    } else if(importance.equals("3")){
+                        expQuest = "300";
+                    } else if(importance.equals("4")){
+                        expQuest = "400";
+                    } else if(importance.equals("5")){
+                        expQuest = "500";
+                    }
+
+                    QuestData questData = new QuestData(descQuest, importance, expQuest);
+
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseReference.child(descQuest).setValue(questData);
+
+                            Toast.makeText(ConfigQuest.this, "Quest added", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ConfigQuest.this,QuestAutism.class));
+                            finish();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(ConfigQuest.this, "Error is" + error.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-
-                QuestData questData = new QuestData(descQuest, importance, expQuest);
-
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child(descQuest).setValue(questData);
-
-                        Toast.makeText(ConfigQuest.this, "Training added", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ConfigQuest.this,QuestAutism.class));
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(ConfigQuest.this, "Error is" + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.irlrpg;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class ConfigTraining extends AppCompatActivity {
 
     private Spinner spin;
     private TextInputEditText descTrainingEdt;
-    private Button btnAdd;
+    private Button btnAddTrain;
     private String expTrain;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -33,7 +34,7 @@ public class ConfigTraining extends AppCompatActivity {
         setContentView(R.layout.activity_training_config_autism);
         spin = findViewById(R.id.levelsArrayTrain);
         descTrainingEdt = findViewById(R.id.descTrain);
-        btnAdd = findViewById(R.id.addTrain);
+        btnAddTrain = findViewById(R.id.addTrain);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Training");
 
@@ -41,43 +42,48 @@ public class ConfigTraining extends AppCompatActivity {
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
         spin.setAdapter(adapter);
 
-        btnAdd.setOnClickListener(new View.OnClickListener(){
+        btnAddTrain.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String descTraining = descTrainingEdt.getText().toString();
                 String difficult = spin.getSelectedItem().toString();
 
-                if(difficult.equals("1")){
-                    expTrain = "100";
-                }else if(difficult.equals("2")){
-                    expTrain = "200";
-                } else if(difficult.equals("3")){
-                    expTrain = "300";
-                } else if(difficult.equals("4")){
-                    expTrain = "400";
-                } else if(difficult.equals("5")){
-                    expTrain = "500";
+                if (TextUtils.isEmpty(descTraining)){
+                    Toast.makeText(ConfigTraining.this, "Please enter training data", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    if(difficult.equals("1")){
+                        expTrain = "100";
+                    }else if(difficult.equals("2")){
+                        expTrain = "200";
+                    } else if(difficult.equals("3")){
+                        expTrain = "300";
+                    } else if(difficult.equals("4")){
+                        expTrain = "400";
+                    } else if(difficult.equals("5")){
+                        expTrain = "500";
+                    }
+
+                    TrainingData trainingData = new TrainingData(descTraining, difficult, expTrain);
+
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseReference.child(descTraining).setValue(trainingData);
+
+                            Toast.makeText(ConfigTraining.this, "Training added", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ConfigTraining.this,TrainingAutism.class));
+                            finish();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(ConfigTraining.this, "Error is" + error.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-
-                TrainingData trainingData = new TrainingData(descTraining, difficult, expTrain);
-
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child(descTraining).setValue(trainingData);
-
-                        Toast.makeText(ConfigTraining.this, "Training added", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ConfigTraining.this,TrainingAutism.class));
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(ConfigTraining.this, "Error is" + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
-
     }
 }
 

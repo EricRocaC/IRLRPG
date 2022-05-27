@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/idRLHome"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    tools:context=".QuestAutism">
 
     <ListView
         android:id="@+id/quests"
         android:layout_width="match_parent"
-        android:layout_height="600dp" />
+        android:layout_height="600dp"
+        android:layout_marginTop="50dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="628dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="658dp"
         android:layout_marginEnd="178dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="7dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,12 +35,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="247dp"
-        android:layout_marginTop="630dp"
+        android:layout_marginTop="660dp"
         android:layout_marginEnd="178dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="7dp"
         android:text="@string/edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/combackQuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="100dp"
+        android:text="@string/ret" />
 </RelativeLayout>

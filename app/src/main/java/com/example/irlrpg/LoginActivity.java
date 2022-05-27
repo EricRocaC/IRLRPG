@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText userNameEdit, pwdEdt;
+    private TextView changePwd;
     private Button loginBtn, registerTV;
     private ProgressBar loadingPB;
+    private Spinner spin;
     private FirebaseAuth mAuth;
 
     @Override
@@ -32,15 +35,28 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         userNameEdit = findViewById(R.id.username);
         pwdEdt = findViewById(R.id.password);
+        changePwd = findViewById(R.id.forgotPwd);
         loginBtn = findViewById(R.id.login);
         loadingPB = findViewById(R.id.idPBLoading);
+        spin = findViewById(R.id.mentalIllness);
         registerTV = findViewById(R.id.buttonReg);
         mAuth = FirebaseAuth.getInstance();
 
         registerTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Login Successful...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Going to register...", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(i);
+            }
+        });
+
+        changePwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "Recovering password...", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(LoginActivity.this, RecoverPassword.class);
+                startActivity(i);
             }
         });
 
@@ -50,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 loadingPB.setVisibility(View.VISIBLE);
                 String userName = userNameEdit.getText().toString();
                 String pwd = pwdEdt.getText().toString();
+                //String mentalIllness = spin.getSelectedItem().toString();
                 if (TextUtils.isEmpty(userName) && TextUtils.isEmpty(pwd)) {
                     Toast.makeText(LoginActivity.this, "Please enter your credentials/", Toast.LENGTH_SHORT).show();
                     return;

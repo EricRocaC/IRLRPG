@@ -27,7 +27,7 @@ public class QuestAutism extends AppCompatActivity {
 
     private FloatingActionButton btnAdd;
     private RecyclerView questRV;
-    private Button btnEdit;
+    private Button btnEdit, btnReturn;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private ArrayList<QuestData> questDataArrayList;
@@ -40,13 +40,22 @@ public class QuestAutism extends AppCompatActivity {
         btnAdd = findViewById(R.id.addQuest);
         btnEdit = findViewById(R.id.btnEditQuest);
         listView = findViewById(R.id.quests);
+        btnReturn = findViewById(R.id.combackQuest);
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(QuestAutism.this, "Going to profile", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(QuestAutism.this, MainActivity.class));
+                finish();
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(QuestAutism.this, "Going to quest Configuration", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(QuestAutism.this, ConfigQuest.class));
-
             }
         });
 
@@ -58,17 +67,17 @@ public class QuestAutism extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> list = new ArrayList<>();
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.quest_rv_item, list);
+        ArrayList<String> questList = new ArrayList<>();
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.quest_rv_item, questList);
         listView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Quests");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
+                questList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    list.add(snapshot.getValue().toString());
+                    questList.add(snapshot.getValue().toString());
                 }
                 adapter.notifyDataSetChanged();
             }

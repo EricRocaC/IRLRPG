@@ -83,6 +83,7 @@ public class EditQuest extends AppCompatActivity {
                         databaseReference.updateChildren(map);
                         Toast.makeText(EditQuest.this, "Quest edited", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(EditQuest.this,QuestAutism.class));
+                        finish();
                     }
 
                     @Override
@@ -106,5 +107,6 @@ public class EditQuest extends AppCompatActivity {
         databaseReference.removeValue();
         Toast.makeText(EditQuest.this, "Quest Deleted", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(EditQuest.this,QuestAutism.class));
+        finish();
     }
 }

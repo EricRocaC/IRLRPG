@@ -25,4 +25,10 @@
     <string name="add">Añadir</string>
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
+    <string name="adviseMessageUser">Introduce tu correo</string>
+    <string name="change">Cambiar</string>
+    <string name="ret">Atrás</string>
+    <string name="logout">Desconectar</string>
+    <string name="strength">Fuerza</string>
+    <string name="inteligence">Inteligencia</string>
 </resources>

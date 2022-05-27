@@ -6,12 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnQuest, btnTraining;
-    int expUser, expNextLevel;
+    private Button btnQuest, btnTraining, logout;
+    private int expUser, expNextLevel, intExp, strExp;
+    private TextView expCurrent, expTotal, inteligence, strength;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_autism);
         btnQuest = findViewById(R.id.goToQuests);
         btnTraining = findViewById(R.id.goToTraining);
+        expCurrent = findViewById(R.id.exp);
+        expTotal = findViewById(R.id.totalExp);
+        inteligence = findViewById(R.id.intExp);
+        strength = findViewById(R.id.strExp);
+        logout = findViewById(R.id.logout);
+        mAuth = FirebaseAuth.getInstance();
+
+        expUser = 0;
+        expNextLevel = 1000;
+        strExp = 100;
+        intExp = 100;
+
+        expCurrent.setText(String.valueOf(expUser));
+        expTotal.setText(String.valueOf(expNextLevel));
+        inteligence.setText(String.valueOf(intExp));
+        strength.setText(String.valueOf(strExp));
 
         btnQuest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,5 +54,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TrainingAutism.class));
             }
         });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                finish();
+            }
+        });
+
     }
 }
