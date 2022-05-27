@@ -1,5 +1,10 @@
 package com.example.irlrpg;
 
+/*
+* @author Eric Roca Cepero
+*
+* */
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +26,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/*
+* Generem la classe que tractara la activitat del login
+* Generem les variables que tractaran cada findView
+*
+* */
+
 public class LoginActivity extends AppCompatActivity {
     private EditText userNameEdit, pwdEdt;
     private TextView changePwd;
@@ -41,6 +52,13 @@ public class LoginActivity extends AppCompatActivity {
         spin = findViewById(R.id.mentalIllness);
         registerTV = findViewById(R.id.buttonReg);
         mAuth = FirebaseAuth.getInstance();
+
+        /*
+        * Creem els onClicks de cada botó de la pantalla
+        * Tractem les dades que ens pasa el usuari per a poder iniciar sessio
+        * Les probem i, en cas de ser correctes, iniciem la sessio
+        *
+        * */
 
         registerTV.setOnClickListener(new View.OnClickListener() {
             @Override

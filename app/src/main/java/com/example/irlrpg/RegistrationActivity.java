@@ -24,6 +24,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private ProgressBar loadingPB;
     private FirebaseAuth mAuth;
 
+    /*
+    * Creem la instancia per a mostrar la pantalla
+    * Generem les findViews per a tractar cada apartar de la App
+    *
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
