@@ -9,6 +9,10 @@ public class QuestData implements Parcelable {
     private String importance;
     private String expQuest;
 
+    public QuestData(){
+
+    }
+
     public QuestData(String descQuest, String importance, String expQuest){
         this.descQuest = descQuest;
         this.importance = importance;

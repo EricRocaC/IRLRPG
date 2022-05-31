@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.style.QuoteSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,7 +32,9 @@ public class QuestAutism extends AppCompatActivity {
     private Button btnEdit, btnReturn;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private ArrayList<QuestData> questDataArrayList;
+    private ArrayList<String> questDataArrayList;
+    private ArrayAdapter<String> adapter;
+    QuestData data;
     private ListView listView;
 
     @Override
@@ -40,7 +44,19 @@ public class QuestAutism extends AppCompatActivity {
         btnAdd = findViewById(R.id.addQuest);
         btnEdit = findViewById(R.id.btnEditQuest);
         listView = findViewById(R.id.quests);
-        btnReturn = findViewById(R.id.combackQuest);
+        btnReturn = findViewById(R.id.comebackQuest);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(QuestAutism.this,EditQuest.class);
+                data = (QuestData) parent.getItemAtPosition(position);
+                i.putExtra("descriptionEdit", data.getDescQuest());
+                i.putExtra("levelsArrayEdit", data.getImportance());
+                startActivity(i);
+                finish();
+            }
+        });
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,17 +83,18 @@ public class QuestAutism extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> questList = new ArrayList<>();
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.quest_rv_item, questList);
+        questDataArrayList = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(this, R.layout.quest_rv_item, questDataArrayList);
         listView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Quests");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                questList.clear();
+                questDataArrayList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    questList.add(snapshot.getValue().toString());
+                    data = dataSnapshot.getValue(QuestData.class);
+                    questDataArrayList.add(data.getExpQuest() + " - " + data.getDescQuest());
                 }
                 adapter.notifyDataSetChanged();
             }
