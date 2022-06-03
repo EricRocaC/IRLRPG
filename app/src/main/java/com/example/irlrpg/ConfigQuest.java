@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +28,7 @@ public class ConfigQuest extends AppCompatActivity {
     private String expQuest;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private FirebaseUser currentFirebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class ConfigQuest extends AppCompatActivity {
         spin = findViewById(R.id.levelsArray);
         descQuestEdt = findViewById(R.id.description);
         btnAdd = findViewById(R.id.addQuest);
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Quests");
 
@@ -46,6 +50,7 @@ public class ConfigQuest extends AppCompatActivity {
             public void onClick(View v){
                 String descQuest = descQuestEdt.getText().toString();
                 String importance = spin.getSelectedItem().toString();
+                String currentUser = currentFirebaseUser.getUid();
 
                 if (TextUtils.isEmpty(descQuest)){
                     Toast.makeText(ConfigQuest.this, "Please enter quest data", Toast.LENGTH_SHORT).show();
@@ -63,7 +68,7 @@ public class ConfigQuest extends AppCompatActivity {
                         expQuest = "500";
                     }
 
-                    QuestData questData = new QuestData(descQuest, importance, expQuest);
+                    QuestData questData = new QuestData(descQuest, importance, expQuest, currentUser);
 
                     databaseReference.addValueEventListener(new ValueEventListener() {
                         @Override

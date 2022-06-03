@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,30 +26,68 @@ import java.util.ArrayList;
 public class TrainingAutism extends AppCompatActivity {
 
     private FloatingActionButton btnAddTraining;
+    private Button btnEditTrain, btnReturn;
     private ListView listViewTrain;
     private ArrayList<String> trainingDataArrayList;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapterT;
     TrainingData dataT;
     private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseUser currentFirebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_autism);
-        listViewTrain = findViewById(R.id.trainings);
-        btnAddTraining = findViewById(R.id.addTraining);
+        listViewTrain = findViewById(R.id.training);
+        btnAddTraining = findViewById(R.id.goAddTrain);
+        btnReturn = findViewById(R.id.comebackTrain);
+        btnEditTrain = findViewById(R.id.btnEditTrain);
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+
+        listViewTrain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(TrainingAutism.this,EditTraining.class);
+                dataT = (TrainingData) parent.getItemAtPosition(position);
+                i.putExtra("descriptionEdit", dataT.getDescTraining());
+                i.putExtra("levelsArrayEdit", dataT.getDifficult());
+                startActivity(i);
+                finish();
+            }
+        });
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TrainingAutism.this, "Going to profile", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TrainingAutism.this, MainActivity.class));
+                finish();
+            }
+        });
 
         btnAddTraining.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
-                Toast.makeText(TrainingAutism.this, "Going to training Configuration", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TrainingAutism.this, "Going to quest Configuration", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(TrainingAutism.this, ConfigTraining.class));
+                finish();
+            }
+        });
+
+        btnEditTrain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TrainingAutism.this, "Going to edit quest", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TrainingAutism.this, EditTraining.class));
+                finish();
             }
         });
 
         trainingDataArrayList = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this, R.layout.quest_rv_item, trainingDataArrayList);
-        listViewTrain.setAdapter(adapter);
+        adapterT = new ArrayAdapter<String>(this, R.layout.training_rv_item, trainingDataArrayList);
+        listViewTrain.setAdapter(adapterT);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Training");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -55,9 +96,11 @@ public class TrainingAutism extends AppCompatActivity {
                 trainingDataArrayList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     dataT = dataSnapshot.getValue(TrainingData.class);
-                    trainingDataArrayList.add(dataT.getDescTraining() + " - " + dataT.getExpTrain() + " EXP");
+                    if(dataT.getUserUID().equals(currentFirebaseUser.getUid())){
+                        trainingDataArrayList.add(dataT.getDescTraining() + " - " + dataT.getExpTrain() + " EXP");
+                    }
                 }
-                adapter.notifyDataSetChanged();
+                adapterT.notifyDataSetChanged();
             }
 
             @Override

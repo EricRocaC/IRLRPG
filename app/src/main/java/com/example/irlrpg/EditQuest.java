@@ -44,7 +44,7 @@ public class EditQuest extends AppCompatActivity {
         spin = findViewById(R.id.levelsArrayTrainEdit);
         updateQuest = findViewById(R.id.editQuest);
         deleteQuest = findViewById(R.id.deleteQuest);
-        //questData = getIntent().getParcelableExtra("i");
+        questData = getIntent().getParcelableExtra("Quests");
         if(questData != null){
             descQuestEdt.setText(questData.getDescQuest());
             String[] items = new String[]{"1","2","3","4","5"};
@@ -56,7 +56,7 @@ public class EditQuest extends AppCompatActivity {
 
         }
 
-        databaseReference = firebaseDatabase.getReference().child("Quests");
+        databaseReference = firebaseDatabase.getReference("Quests").child(descQuest);
         updateQuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

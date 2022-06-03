@@ -4,19 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class QuestData implements Parcelable {
-
     private String descQuest;
     private String importance;
     private String expQuest;
+    private String userUID;
 
     public QuestData(){
 
     }
 
-    public QuestData(String descQuest, String importance, String expQuest){
+    public QuestData(String descQuest, String importance, String expQuest, String userUID){
         this.descQuest = descQuest;
         this.importance = importance;
         this.expQuest = expQuest;
+        this.userUID = userUID;
     }
 
     protected QuestData(Parcel in) {
@@ -36,6 +37,14 @@ public class QuestData implements Parcelable {
             return new QuestData[size];
         }
     };
+
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
 
     public String getDescQuest() {
         return descQuest;

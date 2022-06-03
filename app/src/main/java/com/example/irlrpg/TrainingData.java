@@ -7,15 +7,17 @@ public class TrainingData implements Parcelable {
     private String descTraining;
     private String difficult;
     private String expTrain;
+    private String userUID;
 
     public TrainingData(){
 
     }
 
-    public TrainingData(String descTraining, String difficult, String expTrain){
+    public TrainingData(String descTraining, String difficult, String expTrain, String userUID){
         this.descTraining = descTraining;
         this.difficult = difficult;
         this.expTrain = expTrain;
+        this.userUID = userUID;
     }
 
     protected TrainingData(Parcel in) {
@@ -35,6 +37,14 @@ public class TrainingData implements Parcelable {
             return new TrainingData[size];
         }
     };
+
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
 
     public String getDescTraining() {
         return descTraining;

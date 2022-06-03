@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +29,7 @@ public class ConfigTraining extends AppCompatActivity {
     private String expTrain;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private FirebaseUser currentFirebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class ConfigTraining extends AppCompatActivity {
         spin = findViewById(R.id.levelsArrayTrain);
         descTrainingEdt = findViewById(R.id.descTrain);
         btnAddTrain = findViewById(R.id.addTrain);
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Training");
 
@@ -47,6 +51,7 @@ public class ConfigTraining extends AppCompatActivity {
             public void onClick(View v){
                 String descTraining = descTrainingEdt.getText().toString();
                 String difficult = spin.getSelectedItem().toString();
+                String currentUser = currentFirebaseUser.getUid();
 
                 if (TextUtils.isEmpty(descTraining)){
                     Toast.makeText(ConfigTraining.this, "Please enter training data", Toast.LENGTH_SHORT).show();
@@ -64,7 +69,7 @@ public class ConfigTraining extends AppCompatActivity {
                         expTrain = "500";
                     }
 
-                    TrainingData trainingData = new TrainingData(descTraining, difficult, expTrain);
+                    TrainingData trainingData = new TrainingData(descTraining, difficult, expTrain, currentUser);
 
                     databaseReference.addValueEventListener(new ValueEventListener() {
                         @Override

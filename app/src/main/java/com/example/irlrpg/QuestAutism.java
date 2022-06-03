@@ -17,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,7 @@ public class QuestAutism extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ArrayList<String> questDataArrayList;
     private ArrayAdapter<String> adapter;
+    private FirebaseUser currentFirebaseUser;
     QuestData data;
     private ListView listView;
 
@@ -45,12 +48,13 @@ public class QuestAutism extends AppCompatActivity {
         btnEdit = findViewById(R.id.btnEditQuest);
         listView = findViewById(R.id.quests);
         btnReturn = findViewById(R.id.comebackQuest);
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(QuestAutism.this,EditQuest.class);
-                data = (QuestData) parent.getItemAtPosition(position);
+                data = (QuestData)parent.getItemAtPosition(position);
                 i.putExtra("descriptionEdit", data.getDescQuest());
                 i.putExtra("levelsArrayEdit", data.getImportance());
                 startActivity(i);
@@ -73,6 +77,7 @@ public class QuestAutism extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(QuestAutism.this, "Going to quest Configuration", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(QuestAutism.this, ConfigQuest.class));
+                finish();
             }
         });
 
@@ -81,6 +86,7 @@ public class QuestAutism extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(QuestAutism.this, "Going to edit quest", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(QuestAutism.this, EditQuest.class));
+                finish();
             }
         });
 
@@ -95,7 +101,9 @@ public class QuestAutism extends AppCompatActivity {
                 questDataArrayList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     data = dataSnapshot.getValue(QuestData.class);
-                    questDataArrayList.add(data.getDescQuest() + " - " + data.getExpQuest() + " EXP");
+                    if(data.getUserUID().equals(currentFirebaseUser.getUid())){
+                        questDataArrayList.add(data.getDescQuest() + " - " + data.getExpQuest() + " EXP");
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
