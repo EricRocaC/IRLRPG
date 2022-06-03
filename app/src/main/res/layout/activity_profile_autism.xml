@@ -14,10 +14,10 @@
         android:layout_height="85dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="357dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/goToQuests"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inteligence" />
 
     <TextView
         android:id="@+id/exp"
@@ -44,8 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/goToQuests"
@@ -80,16 +79,18 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="107dp"
         android:layout_height="48dp"
-        android:layout_marginStart="267dp"
+        android:layout_marginStart="49dp"
         android:layout_marginTop="38dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginBottom="645dp"
+        android:layout_marginBottom="200dp"
         android:text="@string/logout"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/strExp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/force"
@@ -97,11 +98,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="54dp"
-        android:layout_marginEnd="332dp"
-        android:layout_marginBottom="658dp"
+        android:layout_marginBottom="28dp"
         android:text="@string/strength"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/inteligence"
+        app:layout_constraintEnd_toStartOf="@+id/strExp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,41 +110,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="288dp"
-        android:layout_marginBottom="611dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="170dp"
         android:text="@string/inteligence"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toStartOf="@+id/intExp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/force" />
 
     <TextView
         android:id="@+id/strExp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="65dp"
         android:layout_marginTop="54dp"
         android:layout_marginEnd="193dp"
-        android:layout_marginBottom="658dp"
+        android:layout_marginBottom="24dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/intExp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/force"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/intExp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="97dp"
         android:layout_marginEnd="193dp"
-        android:layout_marginBottom="615dp"
+        android:layout_marginBottom="170dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/inteligence"
+        app:layout_constraintTop_toBottomOf="@+id/strExp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

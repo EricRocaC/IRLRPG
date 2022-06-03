@@ -8,6 +8,10 @@ public class TrainingData implements Parcelable {
     private String difficult;
     private String expTrain;
 
+    public TrainingData(){
+
+    }
+
     public TrainingData(String descTraining, String difficult, String expTrain){
         this.descTraining = descTraining;
         this.difficult = difficult;

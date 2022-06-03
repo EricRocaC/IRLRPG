@@ -11,6 +11,8 @@
         android:id="@+id/trainings"
         android:layout_width="match_parent"
         android:layout_height="600dp"
+        app:layout_constraintBottom_toTopOf="@+id/addTraining"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,14 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
-        android:layout_marginTop="628dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="178dp"
         android:layout_marginBottom="47dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trainings"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 

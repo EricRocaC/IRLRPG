@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import java.util.Map;
 
 public class EditQuest extends AppCompatActivity {
     private TextInputEditText descQuestEdt;
+    private TextView importanceText;
     private Button updateQuest, deleteQuest;
     private Spinner spin;
     private String expQuest;
@@ -38,6 +40,7 @@ public class EditQuest extends AppCompatActivity {
         setContentView(R.layout.activity_quest_edit_autism);
         firebaseDatabase = FirebaseDatabase.getInstance();
         descQuestEdt = findViewById(R.id.descriptionEdit);
+        importanceText = findViewById(R.id.importanciaEdit);
         spin = findViewById(R.id.levelsArrayTrainEdit);
         updateQuest = findViewById(R.id.editQuest);
         deleteQuest = findViewById(R.id.deleteQuest);

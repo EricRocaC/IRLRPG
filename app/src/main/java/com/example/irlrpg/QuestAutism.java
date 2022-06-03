@@ -69,6 +69,7 @@ public class QuestAutism extends AppCompatActivity {
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 Toast.makeText(QuestAutism.this, "Going to quest Configuration", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(QuestAutism.this, ConfigQuest.class));
@@ -94,7 +95,7 @@ public class QuestAutism extends AppCompatActivity {
                 questDataArrayList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     data = dataSnapshot.getValue(QuestData.class);
-                    questDataArrayList.add(data.getExpQuest() + " - " + data.getDescQuest());
+                    questDataArrayList.add(data.getDescQuest() + " - " + data.getExpQuest() + " EXP");
                 }
                 adapter.notifyDataSetChanged();
             }

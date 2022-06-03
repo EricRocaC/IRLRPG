@@ -24,12 +24,16 @@ public class TrainingAutism extends AppCompatActivity {
 
     private FloatingActionButton btnAddTraining;
     private ListView listViewTrain;
+    private ArrayList<String> trainingDataArrayList;
+    private ArrayAdapter<String> adapter;
+    TrainingData dataT;
     private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_autism);
+        listViewTrain = findViewById(R.id.trainings);
         btnAddTraining = findViewById(R.id.addTraining);
 
         btnAddTraining.setOnClickListener(new View.OnClickListener() {
@@ -40,17 +44,18 @@ public class TrainingAutism extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> trainList = new ArrayList<>();
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.training_rv_item, trainList);
+        trainingDataArrayList = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(this, R.layout.quest_rv_item, trainingDataArrayList);
         listViewTrain.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Training");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                trainList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    trainList.add(snapshot.getValue().toString());
+                trainingDataArrayList.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    dataT = dataSnapshot.getValue(TrainingData.class);
+                    trainingDataArrayList.add(dataT.getDescTraining() + " - " + dataT.getExpTrain() + " EXP");
                 }
                 adapter.notifyDataSetChanged();
             }
