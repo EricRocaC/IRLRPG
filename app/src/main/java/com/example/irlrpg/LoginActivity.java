@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Going to register...", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Recovering password...", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LoginActivity.this, RecoverPassword.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -86,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                 String pwd = pwdEdt.getText().toString();
                 //String mentalIllness = spin.getSelectedItem().toString();
                 if (TextUtils.isEmpty(userName) && TextUtils.isEmpty(pwd)) {
-                    Toast.makeText(LoginActivity.this, "Please enter your credentials/", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Please enter your credentials.", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     mAuth.signInWithEmailAndPassword(userName, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
