@@ -22,14 +22,14 @@
         android:layout_width="85dp"
         android:layout_height="48dp"
         android:layout_marginStart="286dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="253dp"
+        android:layout_marginBottom="5dp"
         android:contentDescription="@string/difficulty_level"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/descTrainEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/descTrainEdit"
@@ -42,47 +42,46 @@
         app:layout_constraintTop_toBottomOf="@+id/levelsArrayTrainEdit" />
 
     <Button
-        android:id="@+id/deleteQuest"
+        android:id="@+id/editTrain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="79dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="244dp"
-        android:layout_marginBottom="652dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="13dp"
         android:text="@string/edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintEnd_toStartOf="@+id/deleteTraining"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/deleteTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="236dp"
+        android:layout_marginStart="57dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="87dp"
-        android:layout_marginBottom="812dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="13dp"
         android:text="@string/delete"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTrain"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dificultatEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="445dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginBottom="267dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/difficulty_level"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/descTrainEdit"
+        app:layout_constraintEnd_toStartOf="@+id/levelsArrayTrainEdit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

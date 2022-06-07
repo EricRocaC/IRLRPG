@@ -7,16 +7,18 @@ public class QuestData implements Parcelable {
     private String descQuest;
     private String importance;
     private String expQuest;
+    private String calendarQuest;
     private String userUID;
 
     public QuestData(){
 
     }
 
-    public QuestData(String descQuest, String importance, String expQuest, String userUID){
+    public QuestData(String descQuest, String importance, String expQuest, String calendarQuest, String userUID){
         this.descQuest = descQuest;
         this.importance = importance;
         this.expQuest = expQuest;
+        this.calendarQuest = calendarQuest;
         this.userUID = userUID;
     }
 
@@ -24,6 +26,7 @@ public class QuestData implements Parcelable {
         descQuest = in.readString();
         importance = in.readString();
         expQuest = in.readString();
+        calendarQuest = in.readString();
     }
 
     public static final Creator<QuestData> CREATOR = new Creator<QuestData>() {
@@ -37,6 +40,14 @@ public class QuestData implements Parcelable {
             return new QuestData[size];
         }
     };
+
+    public String getCalendarQuest() {
+        return calendarQuest;
+    }
+
+    public void setCalendarQuest(String calendarQuest) {
+        this.calendarQuest = calendarQuest;
+    }
 
     public String getUserUID() {
         return userUID;
@@ -80,5 +91,6 @@ public class QuestData implements Parcelable {
         dest.writeString(descQuest);
         dest.writeString(importance);
         dest.writeString(expQuest);
+        dest.writeString(calendarQuest);
     }
 }

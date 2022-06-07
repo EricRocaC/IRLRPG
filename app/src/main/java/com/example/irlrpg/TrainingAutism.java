@@ -22,11 +22,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TrainingAutism extends AppCompatActivity {
 
     private FloatingActionButton btnAddTraining;
-    private Button btnEditTrain, btnReturn;
+    private Button btnReturn;
     private ListView listViewTrain;
     private ArrayList<String> trainingDataArrayList;
     private ArrayAdapter<String> adapterT;
@@ -42,16 +44,19 @@ public class TrainingAutism extends AppCompatActivity {
         listViewTrain = findViewById(R.id.training);
         btnAddTraining = findViewById(R.id.goAddTrain);
         btnReturn = findViewById(R.id.comebackTrain);
-        btnEditTrain = findViewById(R.id.btnEditTrain);
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
         listViewTrain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(TrainingAutism.this,EditTraining.class);
-                dataT = (TrainingData) parent.getItemAtPosition(position);
-                i.putExtra("descriptionEdit", dataT.getDescTraining());
-                i.putExtra("levelsArrayEdit", dataT.getDifficult());
+                String descQuest = parent.getItemAtPosition(position).toString();
+                String str[] = descQuest.split(" - ");
+                List<String> splited;
+                splited = Arrays.asList(str);
+                dataT.setDescTraining(splited.get(0));
+                i.putExtra("descTrainEdit", dataT);
+                Toast.makeText(TrainingAutism.this, "Going to quest Configuration", Toast.LENGTH_SHORT).show();
                 startActivity(i);
                 finish();
             }
@@ -70,17 +75,8 @@ public class TrainingAutism extends AppCompatActivity {
             @Override
 
             public void onClick(View v) {
-                Toast.makeText(TrainingAutism.this, "Going to quest Configuration", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(TrainingAutism.this, ConfigTraining.class));
-                finish();
-            }
-        });
 
-        btnEditTrain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(TrainingAutism.this, "Going to edit quest", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(TrainingAutism.this, EditTraining.class));
+                startActivity(new Intent(TrainingAutism.this, ConfigTraining.class));
                 finish();
             }
         });
@@ -90,7 +86,7 @@ public class TrainingAutism extends AppCompatActivity {
         listViewTrain.setAdapter(adapterT);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Training");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 trainingDataArrayList.clear();

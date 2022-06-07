@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ConfigQuest extends AppCompatActivity {
     public Spinner spin;
+    private CalendarView calendarQuest;
     public TextInputEditText descQuestEdt;
     private Button btnAdd;
     private String expQuest;
@@ -35,6 +37,7 @@ public class ConfigQuest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quests_config_autism);
         spin = findViewById(R.id.levelsArray);
+        calendarQuest = findViewById(R.id.calendarQuest);
         descQuestEdt = findViewById(R.id.description);
         btnAdd = findViewById(R.id.addQuest);
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
@@ -51,6 +54,7 @@ public class ConfigQuest extends AppCompatActivity {
                 String descQuest = descQuestEdt.getText().toString();
                 String importance = spin.getSelectedItem().toString();
                 String currentUser = currentFirebaseUser.getUid();
+                String date = String.valueOf(calendarQuest.getDate());
 
                 if (TextUtils.isEmpty(descQuest)){
                     Toast.makeText(ConfigQuest.this, "Please enter quest data", Toast.LENGTH_SHORT).show();
@@ -68,9 +72,9 @@ public class ConfigQuest extends AppCompatActivity {
                         expQuest = "500";
                     }
 
-                    QuestData questData = new QuestData(descQuest, importance, expQuest, currentUser);
+                    QuestData questData = new QuestData(descQuest, importance, expQuest, date, currentUser);
 
-                    databaseReference.addValueEventListener(new ValueEventListener() {
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             databaseReference.child(descQuest).setValue(questData);

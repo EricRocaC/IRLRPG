@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnQuest, btnTraining, logout;
     private int expUser, expNextLevel, intExp, strExp;
     private TextView expCurrent, expTotal, inteligence, strength;
+    private ProgressBar expBar;
     private FirebaseAuth mAuth;
 
     @Override
@@ -26,12 +28,13 @@ public class MainActivity extends AppCompatActivity {
         btnTraining = findViewById(R.id.goToTraining);
         expCurrent = findViewById(R.id.exp);
         expTotal = findViewById(R.id.totalExp);
+        expBar = findViewById(R.id.progressBar);
         inteligence = findViewById(R.id.intExp);
         strength = findViewById(R.id.strExp);
         logout = findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
 
-        expUser = 0;
+        expUser = 300;
         expNextLevel = 1000;
         strExp = 100;
         intExp = 100;
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         expTotal.setText(String.valueOf(expNextLevel));
         inteligence.setText(String.valueOf(intExp));
         strength.setText(String.valueOf(strExp));
+        expBar.setMax(expNextLevel);
+        expBar.setProgress(expUser);
 
         btnQuest.setOnClickListener(new View.OnClickListener() {
             @Override

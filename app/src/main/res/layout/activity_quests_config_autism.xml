@@ -7,7 +7,7 @@
     android:background="@drawable/bg">
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/calendarQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarQuest" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/description"
@@ -49,7 +49,7 @@
         android:layout_marginEnd="159dp"
         android:layout_marginBottom="2dp"
         android:text="@string/add"
-        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintBottom_toTopOf="@+id/calendarQuest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,13 +58,14 @@
         android:id="@+id/importancia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/importance_level"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toStartOf="@+id/levelsArray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarQuest" />
 </androidx.constraintlayout.widget.ConstraintLayout>

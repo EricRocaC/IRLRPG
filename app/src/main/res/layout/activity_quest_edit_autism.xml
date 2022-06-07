@@ -7,7 +7,7 @@
     android:background="@drawable/bg">
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/calendarQuestEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,15 +21,13 @@
         android:id="@+id/levelsArrayEdit"
         android:layout_width="85dp"
         android:layout_height="48dp"
-        android:layout_marginStart="286dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="243dp"
-        android:contentDescription="@string/difficulty_level"
+        android:contentDescription="@string/importance_level"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintStart_toEndOf="@+id/importanciaEdit"
+        app:layout_constraintTop_toBottomOf="@+id/calendarQuestEdt"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -37,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="53dp"
         android:layout_marginBottom="20dp"
         android:text="@string/importance_level"
@@ -45,7 +43,7 @@
         app:layout_constraintBottom_toTopOf="@+id/descriptionEdit"
         app:layout_constraintEnd_toStartOf="@+id/levelsArrayEdit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarQuestEdt" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/descriptionEdit"
@@ -63,11 +61,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="79dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="244dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginBottom="13dp"
         android:text="@string/edit"
-        app:layout_constraintBottom_toTopOf="@+id/calendarView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/calendarQuestEdt"
+        app:layout_constraintEnd_toStartOf="@+id/deleteQuest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,14 +73,14 @@
         android:id="@+id/deleteQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="236dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="87dp"
+        android:layout_marginEnd="79dp"
         android:layout_marginBottom="13dp"
         android:text="@string/delete"
-        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintBottom_toTopOf="@+id/calendarQuestEdt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editQuest"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,6 +25,10 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".EditTraining"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".QuestAutism"
             android:exported="true"
             android:screenOrientation="portrait"  >

@@ -22,31 +22,16 @@
         android:id="@+id/goAddTrain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="7dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnEditTrain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/training"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btnEditTrain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/goAddTrain"
-        app:layout_constraintTop_toBottomOf="@+id/training" />
 
     <Button
         android:id="@+id/comebackTrain"

@@ -71,7 +71,7 @@ public class ConfigTraining extends AppCompatActivity {
 
                     TrainingData trainingData = new TrainingData(descTraining, difficult, expTrain, currentUser);
 
-                    databaseReference.addValueEventListener(new ValueEventListener() {
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             databaseReference.child(descTraining).setValue(trainingData);
