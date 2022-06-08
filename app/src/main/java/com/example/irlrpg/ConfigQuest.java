@@ -26,7 +26,7 @@ public class ConfigQuest extends AppCompatActivity {
     public Spinner spin;
     private CalendarView calendarQuest;
     public TextInputEditText descQuestEdt;
-    private Button btnAdd;
+    private Button btnAdd, btnBack;
     private String expQuest;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -40,6 +40,7 @@ public class ConfigQuest extends AppCompatActivity {
         calendarQuest = findViewById(R.id.calendarQuest);
         descQuestEdt = findViewById(R.id.description);
         btnAdd = findViewById(R.id.addQuest);
+        btnBack = findViewById(R.id.backQuest);
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Quests");
@@ -47,6 +48,15 @@ public class ConfigQuest extends AppCompatActivity {
         Integer[] items = new Integer[]{1, 2, 3, 4, 5};
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
         spin.setAdapter(adapter);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ConfigQuest.this, "Turning to quest...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ConfigQuest.this,QuestAutism.class));
+                finish();
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener(){
             @Override

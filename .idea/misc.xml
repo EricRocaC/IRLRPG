@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/drawable/btn_bg.xml" value="0.1585" />
+        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.11512717536813923" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout-w936dp/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -16,14 +17,16 @@
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_quest_edit_autism.xml" value="0.33" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_quests.xml" value="0.2" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_quests_autism.xml" value="0.25" />
-        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_quests_config_autism.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_quests_config_autism.xml" value="0.22" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_recover_password.xml" value="0.203125" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_training_autism.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_training_config_autism.xml" value="0.25" />
+        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_training_config_autism.xml" value="0.3355855855855856" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/activity_training_edit_autism.xml" value="0.25" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/quest_rv_item.xml" value="0.15" />
         <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/layout/training_rv_item.xml" value="0.203125" />
+        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/Eric Roca Cepero/AndroidStudioProjects/IRLRPG/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/Users/Eric Roca Cepero/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_dropdown_item_1line.xml" value="0.11145833333333334" />
         <entry key="..\:/Users/Eric Roca Cepero/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.1" />
       </map>

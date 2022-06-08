@@ -25,7 +25,7 @@ public class ConfigTraining extends AppCompatActivity {
 
     private Spinner spin;
     private TextInputEditText descTrainingEdt;
-    private Button btnAddTrain;
+    private Button btnAddTrain, btnBackT;
     private String expTrain;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -38,6 +38,7 @@ public class ConfigTraining extends AppCompatActivity {
         spin = findViewById(R.id.levelsArrayTrain);
         descTrainingEdt = findViewById(R.id.descTrain);
         btnAddTrain = findViewById(R.id.addTrain);
+        btnBackT = findViewById(R.id.backTrain);
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Training");
@@ -45,6 +46,15 @@ public class ConfigTraining extends AppCompatActivity {
         Integer[] items = new Integer[]{1, 2, 3, 4, 5};
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
         spin.setAdapter(adapter);
+
+        btnBackT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ConfigTraining.this, "Turning to train...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ConfigTraining.this,TrainingAutism.class));
+                finish();
+            }
+        });
 
         btnAddTrain.setOnClickListener(new View.OnClickListener(){
             @Override
